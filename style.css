@@ -13,6 +13,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .hero {
@@ -20,6 +21,7 @@ a {
   height: 100vh;
   background: url(bg.png) center/cover no-repeat;
   position: relative;
+  z-index: 1; /* Make sure the hero section stays on top */
 }
 
 .hero::after {
@@ -29,13 +31,17 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.3); /* Reduced the foggy effect */
+  z-index: -1; /* Pushed to the background to not cover the content */
 }
 
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 30px 100px;
+  z-index: 2; /* Ensure nav is clickable and above overlay */
+  position: relative;
 }
 
 .logo {
@@ -56,18 +62,25 @@ nav ul li a {
   font-size: 16px;
 }
 
+nav ul li a:hover {
+  color: #fd4766;
+}
+
 .btn {
   background: #fd4766;
   color: white;
   padding: 10px 30px;
   border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .content {
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 10%;
   color: #fff;
+  z-index: 2; /* Ensures the content is above the background overlay */
 }
 
 .content h1 {
@@ -130,4 +143,5 @@ footer {
   color: white;
   padding: 20px;
   text-align: center;
+  position: relative;
 }
